@@ -1,7 +1,7 @@
 var audio;
 
 //Hide Pause Initially
-$('pause').hide();
+$('#pause').hide();
 
 //Initializer - Play First Song
 initAudio($('#playlist li:first-child'));
@@ -15,7 +15,7 @@ function initAudio(element){
 	//Create a New Audio Object
 	audio = new Audio('media/' + song);
 	
-	if(!audio.currentTime) {
+	if(!audio.currentTime){
 		$('#duration').html('0:00');
 	}
 	
@@ -55,13 +55,13 @@ $('#stop').click(function (){
 });
 
 //Playlist Song Click
-$('playlist li').click(function (){
+$('#playlist li').click(function (){
 	audio.pause ();
 	initAudio($(this));
 	$('#play').hide();
 	$('#pause').show();
 	$('#duration').fadeIn(400);
-	audio.play ();
+	audio.play();
 	showDuration();
 });
 
@@ -71,19 +71,19 @@ $('#volume').change(function (){
 });
 
 //Time Duration
-function showDuration() {
+function showDuration(){
 	$(audio).bind('timeupdate', function(){
 		//Get hours and minutes
 		var s = parseInt(audio.currentTime % 60);
-		var m = parseInt((audio.currentTime / 60) % 60);
+		var m = parseInt((audio.currentTime / 60)% 60);
 		//Add 0 if seconds less than 10
-		if (s < 10) {
+		if (s < 10){
 			s = '0' + s;
 		}
-		$('#duration').html(m + ':' + s);
+		$('#duration').html(m + '.' + s);
 		var value = 0;
-		if (audio.currentTime > 0) {
-			value = Math.floor ((100 / audio.duration)*audio.currentTime);
+		if(audio.currentTime > 0){
+			value = Math.floor((100 / audio.duration)*audio.currentTime);
 		}
 		$('#progress').css('width',value+'%');
 	});
