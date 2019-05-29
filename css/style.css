@@ -60,7 +60,7 @@ input#volume {
 
 #buttons {
 	width: 90px;
-	display: inline-block;
+	display: block;
 	margin: 15px auto;
 	margin-left: 23px;
 	overflow: auto;
